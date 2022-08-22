@@ -1,2 +1,2 @@
 # FindDuplicateFiles
-Find duplicate files in a list of folders (optionally reading their content)
+Find duplicate files in a list of folders, comparing their MD5-hashed content.
