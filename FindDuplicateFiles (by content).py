@@ -30,8 +30,8 @@ def GetFilesInFolderInfo(folderList):
 # ------------------------------------------------------------------
 def BuiltDuplicatesDict(filesInfo, readContent=False):
   
-  # PASS 1 of 2 (fitxers que medeixen el mateix)
-  if readContent: print("Pass 1 of 2...")
+  # Pas 1 of 2 (fitxers que medeixen el mateix)
+  if readContent: print("Step 1 of 2...")
 
   fdict = {}
   for e in filesInfo:
@@ -49,8 +49,8 @@ def BuiltDuplicatesDict(filesInfo, readContent=False):
 
   if not readContent: return fdict
 
-  # PASS 2 of 2 (calcular MD5 dels fitxers que medeixen el mateix)
-  print("Pass 2 of 2..." )
+  # Pas 2 of 2 (calcular MD5 dels fitxers que medeixen el mateix)
+  print("Step 2 of 2..." )
   count = 0
   for size in fdict:
     for filename in fdict[size]:
