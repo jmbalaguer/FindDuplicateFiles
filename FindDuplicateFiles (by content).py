@@ -14,6 +14,7 @@ locale.setlocale(locale.LC_ALL, '')  # Use '' for auto, or force e.g. to 'en_US.
 def GetFilesInFolderInfo(folderList):
   filesInfo = [] 
   for folder in folderList:
+    folder = os.path.expanduser(folder) 
     for path, subdirs, files in os.walk(folder): # També els subdirectoris
       for name in files:
         filename = os.path.join(path, name)
@@ -32,6 +33,7 @@ def BuiltDuplicatesDict(filesInfo, readContent=False):
   
   # Pas 1 de 2 (fitxers que medeixen el mateix)
   fdict = {}
+  
   for e in filesInfo:
     filename = e[0]
     size = str(e[1]).zfill(13)
