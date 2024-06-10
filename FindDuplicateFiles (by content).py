@@ -81,7 +81,7 @@ def BuiltDuplicatesDict(filesInfo, readContent=False):
 folders = ["C:\\MY_DATA"] # Llista de directoris on cercar duplicats
 files = GetFilesInFolderInfo(folders)
 dups = BuiltDuplicatesDict(files, readContent=True) # readContent es molt lent!!!
-print("Duplicate files in %s (sorted by size):" % folders)
+print("Duplicate files in %s (sorted by size):\n" % folders)
 for k in sorted(dups.keys(), reverse=True):
   print( "{:n}".format(int(k[:13]))+ " bytes:" )
   for e in dups[k]:
