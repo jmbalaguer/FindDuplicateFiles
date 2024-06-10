@@ -31,8 +31,6 @@ def GetFilesInFolderInfo(folderList):
 def BuiltDuplicatesDict(filesInfo, readContent=False):
   
   # Pas 1 de 2 (fitxers que medeixen el mateix)
-  if readContent: print("Step 1 of 2...")
-
   fdict = {}
   for e in filesInfo:
     filename = e[0]
@@ -50,12 +48,11 @@ def BuiltDuplicatesDict(filesInfo, readContent=False):
   if not readContent: return fdict
 
   # Pas 2 de 2 (calcular MD5 dels fitxers que medeixen el mateix)
-  print("Step 2 of 2..." )
   count = 0
   for size in fdict:
     for filename in fdict[size]:
       count += 1
-  print("Calculating " + "{:n}".format(count) + " MD5...")
+  print("Checking " + "{:n}".format(count) + " MD5 signatures...")
 
   count = 0
   fdict2 = {}
@@ -69,8 +66,7 @@ def BuiltDuplicatesDict(filesInfo, readContent=False):
         fdict2[key] = [] 
       fdict2[key].append(filename)
       count += 1
-      if count % 100 == 0: print("{:n}".format(count) + " MD5 calculated.")
-  print("***")
+      if count % 100 == 0: print("{:n}".format(count) + " MD5 signatures checked.")
 
   # Esborra els fitxers únics  
   for key in list(fdict2.keys()):
@@ -85,10 +81,9 @@ def BuiltDuplicatesDict(filesInfo, readContent=False):
 folders = ["C:\\MY_DATA"] # Llista de directoris on cercar duplicats
 files = GetFilesInFolderInfo(folders)
 dups = BuiltDuplicatesDict(files, readContent=True) # readContent es molt lent!!!
-print("Potentially duplicate files in %s (sorted by size):" % folders)
+print("Duplicate files in %s (sorted by size):" % folders)
 for k in sorted(dups.keys(), reverse=True):
   print( "{:n}".format(int(k[:13]))+ " bytes:" )
   for e in dups[k]:
     print("  "+e)
   print()
-
