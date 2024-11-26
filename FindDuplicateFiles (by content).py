@@ -11,7 +11,7 @@ locale.setlocale(locale.LC_ALL, '')  # Use '' for auto, or force e.g. to 'en_US.
 # ------------------------------------------------------------------
 # Recull informació dels fitxers en una llista de directoris
 # ------------------------------------------------------------------
-def GetFilesInFolderInfo(folderList):
+def GetFilesInfo(folderList):
   filesInfo = [] 
   for folder in folderList:
     folder = os.path.expanduser(folder) 
@@ -81,7 +81,7 @@ def BuiltDuplicatesDict(filesInfo, readContent=False):
         
 
 folders = ["C:\\MY_DATA"] # Llista de directoris on cercar duplicats
-files = GetFilesInFolderInfo(folders)
+files = GetFilesInfo(folders)
 dups = BuiltDuplicatesDict(files, readContent=True) # readContent es molt lent!!!
 print("Duplicate files in %s (sorted by size):\n" % folders)
 for k in sorted(dups.keys(), reverse=True):
